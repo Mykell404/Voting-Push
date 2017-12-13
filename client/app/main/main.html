@@ -1,0 +1,55 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<header class="hero-unit" id="banner">
+  <div ng-hide="isLoggedIn()" class="container">
+    <h1>Votepush</h1>
+    <p class="lead">Create custom polls, push votes & share with friends</p>
+	<div class="btn btn-group">
+		<a href="/signin" class="btn btn-lg btn-primary">Sign in</a>
+		<a href="/signup" class="btn btn-lg btn-success">Sign Up</a>
+  	</div>
+  </div>
+	
+  <div ng-show="isLoggedIn()" class="container">
+    <h1>Dashboard</h1>
+    <p class="lead">Any Polls for display today?</p>
+	  <div class="btn btn-group">
+		<a href="/polls/new" class="btn btn-lg btn-primary">New Poll</a>
+		<a href="/polls" class="btn btn-lg btn-success">My Polls</a>
+	  </div>
+  </div>
+	
+</header>
+
+<div class="container" style="margin-top:20px">
+	<div class="row">
+		<div class="col-xs-6">
+			<div class="panel">
+				<div class="list-group">
+					<div class="list-group-item" ng-repeat="things in awesomeThings | limitTo:2">
+						<div class="list-group-item-heading">{{things.name}}</div>
+						<div class="list-group-item-text">{{things.info}}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-xs-6">
+			<div class="panel">
+				<div class="list-group">
+					<div class="list-group-item" ng-repeat="things in awesomeThings |orderBy:'-_id' | limitTo:2">
+						<div class="list-group-item-heading">{{things.name}}</div>
+						<div class="list-group-item-text">{{things.info}}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<footer class="footer navbar-bottom navbar-static-bottom">
+  <div class="container">
+      <p>VotePush
+        <a href="https://twitter.com/YCT_NAPES">@YCT_NAPES</a></p>
+  </div>
+</footer>
+

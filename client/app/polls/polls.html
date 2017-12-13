@@ -1,0 +1,52 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<header class="hero-unit" id="banner">
+  <div ng-hide="isLoggedIn()" class="container">
+    <h1>Votepush</h1>
+    <p class="lead">Create custom polls, push votes & share with friends</p>
+	<div class="btn btn-group">
+		<a href="/signin" class="btn btn-lg btn-primary">Sign in</a>
+		<a href="/signup" class="btn btn-lg btn-success">Sign Up</a>
+  	</div>
+  </div>
+	
+  <div ng-show="isLoggedIn()" class="container">
+    <h1>Wanna Create a Poll?</h1>
+    <p class="lead">Create Polls and Share with friends</p>
+	  <div class="btn btn-group">
+		<a href="/polls/new" class="btn btn-lg btn-primary">New Poll</a>
+	  </div>
+  </div>
+</header>
+<body>
+	<div class="container" style="margin-top:5px">
+		<div class="row">
+			<div class="col-md-3">
+				<div ng-show="pollOwner">
+				  <h3>{{pollTitle}}</h3> <h4>by {{pollOwner}}</h4>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="list-group" ng-hide="pollOwner">
+					<div class="list-group-item" ng-repeat="myPoll in myPolls">
+						<div class="list-group-item-text">
+							<a ng-href="polls/{{myPoll.fullName}}/{{myPoll.name}}/chart" ng-model="myPoll.name">{{myPoll.name}}</a>
+							<a ng-click="deletePoll(myPoll._id)" class="btn btn-default delete">Delete</a>
+						</div>
+					</div>
+				</div>
+				<div ng-show="pollOwner">
+					<div class="list-group" style="margin-top:20px">
+						<div class="list-group-item" ng-repeat="myPoll in pagePolls.options.options">
+							<div class="list-group-item-text">
+								<input ng-click="pollSelected(myPoll)" type="radio" name="poll" class="poll"> {{myPoll}}
+							</div>
+						</div>
+						<button ng-click="submitVote(pagePolls._id)" class="btn btn-success" style="margin-top:5px">Vote</button>
+						<button ng-click="" class="btn btn-primary" style="margin-top: 5px" href="/polls">Share</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3"></div>
+		</div>
+	</div>
+</body>	

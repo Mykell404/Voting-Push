@@ -1,0 +1,41 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<body>
+	
+<header class="hero-unit" id="banner" ng-hide="isLoggedIn()">
+  <div class="container">
+    <h1>Votepush</h1>
+    <p class="lead">Create custom polls, push votes & share with friends</p>
+	<div class="btn btn-group">
+		<a href="/signin" class="btn btn-lg btn-primary">Sign in</a>
+		<a href="/signup" class="btn btn-lg btn-success">Sign Up</a>
+  	</div>
+  </div>
+</header>
+	
+	<div class="container" ng-show="isLoggedIn()">
+		<div class="row">
+			<div class="col-lg-4">
+				<h3>Create a new poll</h3>
+				<form name="addpoll" ng-submit="addNew()" novalidate>
+					<div class="form-group">
+						<label for="name">Name your poll</label>
+						<input type="text" name="name" class="form-control" ng-model="pollName" placeholder="What is my best food?" required>
+					</div>
+
+					<div class="form-group">
+						<label for="options">Options</label>
+						<input type="text" ng-repeat = "i in placeholders track by $index" ng-model="options[$index]" placeholder="{{i}}" class="form-control" required>
+					</div>
+
+					<div class="form-buttons">
+						<a class="btn btn-default" ng-click="moreOptions()"><span class="glyphicon glyphicon-plus-sign"></span> Add more options</a><br/><br/>
+						<button ng-disabled="addpoll.$invalid" class="btn btn-success">Submit</button>
+						<a class="btn btn-danger" href="/polls">Cancel</a>
+					</div>
+				</form>
+			</div>
+			<div class="col-lg-4"></div>
+			<div class="col-lg-3"></div>
+		</div>
+	</div>
+</body>
