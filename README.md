@@ -1,5 +1,8 @@
 # Voting-app
 This is a voting app 
 Languages Used: (NodeJs, Angular, Mongodb)
-"# votingweb" 
-"# votingweb" 
+
+# Install Dependencies
+npm install
+then 
+bower install
