@@ -16,7 +16,7 @@
     "ejs": "~0.8.4",
     "mongoose": "~4.0.3",
     "jsonwebtoken": "^5.0.0",
-    "express-jwt": "^3.0.0",
+    "express-jwt": "^6.0.0",
     "passport": "~0.2.0",
     "passport-local": "~0.1.6",
     "passport-twitter": "latest",
